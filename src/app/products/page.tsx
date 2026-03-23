@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import dbConnect from '@/lib/db'
 import Product, { IProduct } from '@/models/product'
 import ProductCard from '@/components/ProductCard'
@@ -39,7 +40,15 @@ export default async function ProductsPage({ searchParams }: PageProps) {
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-semibold mb-2">Catálogo de salud</h1>
+      <div className="flex items-center justify-between mb-2">
+        <h1 className="text-3xl font-semibold">Catálogo de salud</h1>
+        <Link
+          href="/products/new"
+          className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+        >
+          + Añadir producto
+        </Link>
+      </div>
       <p className="text-gray-500 mb-6">{products.length} productos encontrados</p>
 
       <div className="flex flex-col sm:flex-row gap-4 mb-8">
